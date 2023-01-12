@@ -5,6 +5,7 @@ function Tablebody(){
         <Table striped bordered hover variant="dark">
           <thead>
             <tr>
+              <th></th>
               <th>
                 <h2>Hello World</h2>
               </th>
