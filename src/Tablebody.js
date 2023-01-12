@@ -6,10 +6,12 @@ function Tablebody(){
           <thead>
             <tr>
               <th></th>
+              <th></th>
               <th>
                 <h2>Hello World</h2>
               </th>
             </tr>
+            <tr></tr>
           </thead>
         </Table>
     );
