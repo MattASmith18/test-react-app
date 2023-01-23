@@ -28,14 +28,7 @@ class dataCall {
                     <h1> Error </h1> </div>;
 
             return (
-                <div className="data"> {items.map((item) => (
-                    <ol key={item.id}>
-                        User_Name: {item.username},
-                        Full_Name: {item.name},
-                        User_Email: {item.email}
-                    </ol>
-                ))}
-                </div>
+                items
             );
         };
     }
