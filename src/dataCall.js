@@ -1,37 +1,39 @@
-class dataCall {
-    constructor() {
+import axios from "axios";
+import React,{useEffect} from "react";
 
-        // Constructor 
-        constructor(props); {
-            super(props);
+const People = () => {
+    useEffect(()=>{getPeople();}, []);
 
-            this.state = {
-                items: [],
-                DataisLoaded: false
-            };
-        };
+    const [people, setPeople] = React.useState();
 
-        // ComponentDidMount is used to
-        // execute the code 
-        componentDidMount(); {
-            fetch("https://express-api.test").then((res) => res.json()).then((json) => {
-                this.setState({
-                    items: json,
-                    DataisLoaded: true
-                });
-            });
-        }
-        render(); {
-            const { DataisLoaded, items } = this.state;
-            if (!DataisLoaded)
-                return <div>
-                    <h1> Error </h1> </div>;
+    const getPeople = () => {
+        axios
+            .get(`http://express-api.test:32002/people`).then((res) => {
+                setPeople(res.data);
+                console.log(people);
+            })
+            .catch((err) => console.error(err));
+    };
 
-            return (
-                items
-            );
-        };
-    }
-}
+    return(
+        <thead>
+            {people.map((people) => (
+                <tr key={people.id}>
+                    <th>
+                        Name:{people.first_name},{people.last_name}
+                    </th>
+                    <th>
+                        Email:{people.email}
+                    </th>
+                    <th>
+                        Age: {people.age}
+                    </th>
+                </tr>
+            ))}
+        </thead>
+    );
+};
+
+
        
-    export default dataCall;
+export default People;
