@@ -1,39 +1,44 @@
 import axios from "axios";
 import React,{useEffect} from "react";
 
-const People = () => {
-    useEffect(()=>{getPeople();}, []);
+//Post = PeoplePost
+//getPost = getPeople
+const PeoplePost = () => {
+    
+    useEffect(()=>{
+        getPeople();
+    }, []);
 
-    const [people, setPeople] = React.useState();
+    //peoples = posts & setPeople = setPosts
+    const [peoples, setPeople] = React.useState();
 
     const getPeople = () => {
         axios
-            .get(`http://express-api.test:32002/people`).then((res) => {
+            .get(`http://api.test/people`)
+            .then((res) => {
                 setPeople(res.data);
-                console.log(people);
+                console.log(peoples);
             })
             .catch((err) => console.error(err));
     };
 
+    getPeople();    
+
     return(
-        <thead>
-            {people.map((people) => (
-                <tr key={people.id}>
-                    <th>
-                        Name:{people.first_name},{people.last_name}
-                    </th>
-                    <th>
-                        Email:{people.email}
-                    </th>
-                    <th>
-                        Age: {people.age}
-                    </th>
-                </tr>
+        <ul>
+            {peoples.map((post) => (
+                <li key = {post.id}>
+                    Name: {post.first_name}, {post.last_name},
+                    Email: {post.email},
+                    Age: {post.age}
+                    <hr />
+                    <br />
+                </li>
             ))}
-        </thead>
+        </ul>
     );
 };
 
 
        
-export default People;
+export default PeoplePost;

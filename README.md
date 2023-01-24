@@ -18,4 +18,4 @@ open powershell
 
 - run kubectl get pods
 
-- run minikube service test-react-app --url
+- search http://test-react-app.test:32000
