@@ -4,26 +4,27 @@ import React,{useEffect} from "react";
 //Post = PeoplePost
 //getPost = getPeople
 const PeoplePost = () => {
-    
+
     useEffect(()=>{
         getPeople();
     }, []);
 
     //peoples = posts & setPeople = setPosts
-    const [peoples, setPeople] = React.useState();
+    const [peoples, setPeople] = React.useState([]);
 
     const getPeople = () => {
+        console.log("hi before request");
         axios
-            .get(`http://api.test/people`)
-            .then((res) => {
-                setPeople(res.data);
+            .get("http://api.test/people")
+            .then((res) => { console.log("hi");
+                console.log(res);
+                setPeople(res.data.Employees);
                 console.log(peoples);
+            
             })
             .catch((err) => console.error(err));
     };
-
-    getPeople();    
-
+  
     return(
         <ul>
             {peoples.map((post) => (
