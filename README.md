@@ -1,21 +1,33 @@
-open powershell
+minikube start --insecure-registry="10.0.0.0/24"
 
-- run minikube start --insecure-registry="10.0.0.0/24"
+minikube addons enable ingress
 
-- run & minikube -p minikube docker-env --shell powershell | Invoke-Expression
+minikube addons enable ingress-dns
 
-- run & minikube -p minikube docker-env | Invoke-Expression
+kubectl get pods -n ingress-nginx
 
-- run minikube docker-env
+Add-DnsClientNrptRule -Namespace ".test" -NameServers "$(minikube ip)"
 
-- go to file
+Get-DnsClientNrptRule | Where-Object {$_.Namespace -eq '.test'} | Remove-DnsClientNrptRule -Force; Add-DnsClientNrptRule -Namespace ".test" -NameServers "$(minikube ip)"
 
-- run docker build -t test-react-app .
+& minikube -p minikube docker-env | Invoke-Expression
 
-- run docker images test-react-app
+& minikube -p minikube docker-env --shell powershell | Invoke-Expression
 
-- run kubectl apply -f .\deployment.yaml
+kubectl apply -f .\ingress.yaml
 
-- run kubectl get pods
+Go to react-app file: 
 
-- search http://test-react-app.test:32000
+& minikube -p minikube docker-env --shell powershell | Invoke-Expression
+
+docker build -t test-react-app .
+
+kubectl apply -f .\deployment.yaml
+
+go to express api file: 
+
+& minikube -p minikube docker-env --shell powershell | Invoke-Expression
+
+docker build -t express-api .
+
+kubectl apply -f .\deployment.yaml
