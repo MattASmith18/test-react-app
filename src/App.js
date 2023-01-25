@@ -1,6 +1,6 @@
 import './App.css';
-import Tablebody from './Tablebody';
 import NavBar from './NavBar';
+import People from './dataCall'
 
 
 
@@ -11,7 +11,7 @@ function App() {
         <NavBar />
       </header>
       <div> 
-        <Tablebody />
+        <People />
       </div>
     </div>
   );
