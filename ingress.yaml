@@ -28,7 +28,7 @@ spec:
             name: express-api
             port: 
               number: 3000
-  - host: MongoDB.test
+  - host: mongodb.test
     http:
       paths:
       - pathType: Prefix
