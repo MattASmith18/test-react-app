@@ -1,9 +1,15 @@
-import axios from "axios";
-import React,{useEffect} from "react";
+import React,{useEffect} from "react"
+import axios from "axios"
+var cors = require('cors')
 
 //Post = PeoplePost
 //getPost = getPeople
 const PeoplePost = () => {
+
+    const Axios = axios.create({
+        baseURL: `http://api.test/people`,
+        withCredentials: true
+    })
 
     useEffect(()=>{
         getPeople();
@@ -13,9 +19,9 @@ const PeoplePost = () => {
     const [peoples, setPeople] = React.useState([]);
 
     const getPeople = () => {
-        console.log("hi before request");
+        console.log("hi before request new");
         axios
-            .get("http://api.test/people")
+            .get("http://api.test/people", {mode: 'cors'})
             .then((res) => { console.log("hi");
                 console.log(res);
                 setPeople(res.data.Employees);
