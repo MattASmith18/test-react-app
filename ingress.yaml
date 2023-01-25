@@ -28,13 +28,3 @@ spec:
             name: express-api
             port: 
               number: 3000
-  - host: mongodb.test
-    http:
-      paths:
-      - pathType: Prefix
-        path: "/"
-        backend:
-          service:
-            name: mongodb-service
-            port: 
-              number: 8080
