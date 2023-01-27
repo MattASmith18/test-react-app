@@ -3,7 +3,7 @@ kind: Ingress
 metadata:
   name: myingress
   annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /
+    nginx.ingress.kubernetes.io/rewrite-target: "/"
   labels:
     name: myingress
 spec:
@@ -17,7 +17,7 @@ spec:
           service:
             name: test-react-app
             port: 
-              number: 80
+              number: 210
   - host: api.test
     http:
       paths:

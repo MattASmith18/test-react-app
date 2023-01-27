@@ -17,7 +17,7 @@ spec:
           image: test-react-app
           imagePullPolicy: Never
           ports:
-            - containerPort: 80
+            - containerPort: 210
       restartPolicy: Always
 
 
@@ -30,8 +30,8 @@ metadata:
 spec:
   type: NodePort
   ports:
-    - port: 80
-      targetPort: 80
+    - port: 210
+      targetPort: 210
       protocol: TCP
       nodePort: 32000
   selector:
