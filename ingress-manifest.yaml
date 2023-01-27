@@ -3,9 +3,7 @@ kind: Ingress
 metadata:
   name: myingress
   annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: "/"
-  labels:
-    name: myingress
+    nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   rules:
   - host: app.test
@@ -28,3 +26,6 @@ spec:
             name: express-api
             port: 
               number: 3000
+
+
+

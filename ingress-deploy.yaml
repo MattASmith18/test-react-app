@@ -1,0 +1,17 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ingress
+spec:
+  selector:
+    matchLabels:
+      app: myingress
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: myingress
+    spec:
+      containers:
+      - name: ingress-cont
+        image: gcr.io/google-samples/hello-app:1.0
