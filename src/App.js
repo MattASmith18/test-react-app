@@ -2,8 +2,6 @@ import './App.css';
 import NavBar from './NavBar';
 import People from './dataCall'
 
-
-
 function App() {
   return (
     <div className="App">
